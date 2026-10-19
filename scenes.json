@@ -1,0 +1,78 @@
+[
+  {
+    "id": "scene-1",
+    "folder": "frame 1",
+    "title": "I. The Sunlit Harvest",
+    "badge": "01 / ORIGIN",
+    "subheading": "Beneath the Tuscan sun, ripe San Marzano plum tomatoes and sweet Mediterranean herbs are gathered by hand at dawn.",
+    "quote": "“Every great pizza begins in the soil.”",
+    "frameCount": 300,
+    "startFrame": 1,
+    "endFrame": 300,
+    "totalFramesBefore": 0,
+    "textAlignment": "left",
+    "theme": "warm-dawn",
+    "details": [
+      { "label": "Tomatoes", "val": "San Marzano D.O.P." },
+      { "label": "Soil", "val": "Volcanic Limestone" },
+      { "label": "Sunlight", "val": "14 hrs Daily" }
+    ]
+  },
+  {
+    "id": "scene-2",
+    "folder": "frame 2",
+    "title": "II. The Fire & Handcrafted Stone",
+    "badge": "02 / CRAFTSMANSHIP",
+    "subheading": "Inside the stone archway, our pizzaiolo kneads 48-hour slow-fermented dough while white oak embers crackle at 900°F.",
+    "quote": "“Fire is not merely heat; it is an ingredient.”",
+    "frameCount": 300,
+    "startFrame": 1,
+    "endFrame": 300,
+    "totalFramesBefore": 300,
+    "textAlignment": "right",
+    "theme": "ember-glow",
+    "details": [
+      { "label": "Fermentation", "val": "48 Hours Cold" },
+      { "label": "Wood Type", "val": "Aged White Oak" },
+      { "label": "Hearth Temp", "val": "480°C / 900°F" }
+    ]
+  },
+  {
+    "id": "scene-3",
+    "folder": "frame 3",
+    "title": "III. Piazza & Osteria Crust & Ember",
+    "badge": "03 / GATHERING",
+    "subheading": "Overlooking the azure coastline, neighbours and travellers unite around striped awnings, rustic wine, and the laughter of convivial feasts.",
+    "quote": "“To eat together is to dwell in joy.”",
+    "frameCount": 300,
+    "startFrame": 1,
+    "endFrame": 300,
+    "totalFramesBefore": 600,
+    "textAlignment": "left",
+    "theme": "coastal-afternoon",
+    "details": [
+      { "label": "Location", "val": "Amalfi Cliffside" },
+      { "label": "Atmosphere", "val": "Mediterranean Warmth" },
+      { "label": "Table Setting", "val": "Hand-spun Linen" }
+    ]
+  },
+  {
+    "id": "scene-4",
+    "folder": "frame 4",
+    "title": "IV. The Golden Crust & Melted Mozzarella",
+    "badge": "04 / THE CULMINATION",
+    "subheading": "Blistered leopard-spotted crust, rich reduction of sweet tomato sugo, molten Fior di Latte cheese, and hand-torn basil.",
+    "quote": "“A bite into eternity.”",
+    "frameCount": 275,
+    "startFrame": 1,
+    "endFrame": 275,
+    "totalFramesBefore": 900,
+    "textAlignment": "center",
+    "theme": "golden-hour",
+    "details": [
+      { "label": "Cheese", "val": "Fior di Latte D’Agerola" },
+      { "label": "Olive Oil", "val": "First Cold Pressed" },
+      { "label": "Bake Time", "val": "60 Seconds" }
+    ]
+  }
+]

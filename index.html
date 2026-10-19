@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Crust & Ember — Artisan Pizzeria & Cinematic Journey</title>
+  <meta name="description" content="A cinematic, editorial Italian pizzeria website celebrating handcrafted wood-fired pizza, sun-drenched San Marzano harvest, and old-world craftsmanship." />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23C96238' d='M12 2.5s-4 4.5-4 8.5a4 4 0 0 0 8 0c0-4-4-8.5-4-8.5z'/%3E%3Cpath fill='%23F4B942' d='M12 18.5a2.5 2.5 0 0 1-2.5-2.5c0-1.5 1.5-3.5 2.5-4.5 1 1 2.5 3 2.5 4.5a2.5 2.5 0 0 1-2.5 2.5z'/%3E%3C/svg%3E" />
+
+  <!-- Google Fonts: Cormorant Garamond & Playfair Display & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+
+  <!-- Accessible Skip Navigation Link -->
+  <a href="#menu" class="skip-link">Skip to menu and content</a>
+
+  <!-- Preloader Screen -->
+  <div class="preloader-screen" id="preloader" aria-live="polite" aria-busy="true">
+    <svg class="preloader-icon" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 10.5c-1.93 0-3.5-1.57-3.5-3.5S10.07 5.5 12 5.5s3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z"/>
+    </svg>
+    <div class="preloader-title">Crust & Ember</div>
+    <div class="preloader-sub" id="preloader-status">Kindling the Wood Fired Hearth...</div>
+    <div class="preloader-bar-wrap" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="preloader-progress">
+      <div class="preloader-bar-fill" id="preloader-fill"></div>
+    </div>
+  </div>
+
+  <!-- Header Navigation -->
+  <header class="site-header" id="site-header">
+    <a href="#" class="brand" aria-label="Crust & Ember Pizzeria Homepage">
+      <svg class="brand-flame" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M12 2.5s-4 4.5-4 8.5a4 4 0 0 0 8 0c0-4-4-8.5-4-8.5z" />
+        <path d="M12 18.5a2.5 2.5 0 0 1-2.5-2.5c0-1.5 1.5-3.5 2.5-4.5 1 1 2.5 3 2.5 4.5a2.5 2.5 0 0 1-2.5 2.5z" opacity="0.7"/>
+      </svg>
+      <div>
+        <span class="brand-text">Crust & Ember</span>
+      </div>
+      <span class="brand-sub">Pizzeria Artigianale</span>
+    </a>
+
+    <nav aria-label="Primary Navigation">
+      <ul class="nav-links">
+        <li><a href="#cinematic" class="nav-link">The Journey</a></li>
+        <li><a href="#menu" class="nav-link">Pizze Classiche</a></li>
+        <li><a href="#philosophy" class="nav-link">Craft & Origin</a></li>
+        <li><a href="#visit" class="nav-link">Visit & Contact</a></li>
+      </ul>
+    </nav>
+
+    <div class="header-actions">
+      <button class="btn btn-outline" id="btn-quick-menu" type="button">Menu</button>
+      <button class="btn btn-terracotta" id="btn-book-table" type="button" aria-haspopup="dialog" aria-controls="booking-modal">Reserve Table</button>
+    </div>
+  </header>
+
+  <!-- Interactive HUD Bar -->
+  <div class="experience-hud" id="experience-hud" role="region" aria-label="Story scrubber progress">
+    <span class="hud-label" id="hud-frame-label">Frame 001</span>
+    <div class="hud-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="hud-track-progress">
+      <div class="hud-progress" id="hud-progress-bar"></div>
+    </div>
+    <span class="hud-scene-name" id="hud-scene-name">I. The Sunlit Harvest</span>
+  </div>
+
+  <!-- Main Scrollable Canvas Story Container -->
+  <main id="cinematic" class="cinematic-scroll-container" aria-label="Cinematic 4-Act Italian Pizzeria Story">
+    <div class="canvas-sticky-frame">
+      <!-- High Performance HTML5 Canvas with accessible description -->
+      <canvas id="story-canvas" role="img" aria-label="Cinematic visual journey showing the harvest of San Marzano tomatoes, wood-fired stone oven kneading, Amalfi terrace feasting, and the finished pizza cheese pull."></canvas>
+
+      <!-- Atmospheric Vignette and Tint -->
+      <div class="cinematic-overlay" aria-hidden="true"></div>
+
+      <!-- Synchronized Editorial Story Cards -->
+      <div class="story-editorial-layer" id="story-editorial">
+        
+        <!-- Scene 1: Harvest (Folder 1: frames 1 - 300) -->
+        <article class="editorial-card card-left active" id="card-scene-1">
+          <span class="card-badge">01 / The Tuscan Origin</span>
+          <h2 class="card-title">Hand-Harvested at Golden Dawn</h2>
+          <p class="card-body">
+            Our story begins in the volcanic soil of Southern Italy, where heirloom San Marzano plum tomatoes drink 14 hours of golden Mediterranean sunlight before being gathered by hand.
+          </p>
+          <div class="card-quote">
+            “Every great pizza begins not in the kitchen, but in the morning dew of the vine.”
+          </div>
+          <div class="card-specs">
+            <div class="spec-item">
+              <span class="spec-label">Produce</span>
+              <span class="spec-value">San Marzano D.O.P.</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">Terrain</span>
+              <span class="spec-value">Volcanic Limestone</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">Gathering</span>
+              <span class="spec-value">Basket by Hand</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Scene 2: Pizzaiolo & Stone Oven (Folder 2: frames 301 - 600) -->
+        <article class="editorial-card card-right" id="card-scene-2">
+          <span class="card-badge">02 / The Artisan Hearth</span>
+          <h2 class="card-title">Fire, Flour & 48 Hours of Patience</h2>
+          <p class="card-body">
+            Stone arches shelter the crackle of seasoned white oak. Hand-stretched dough, cold-fermented over two full sun cycles, enters the mouth of an oven ablaze at 900 degrees.
+          </p>
+          <div class="card-quote">
+            “Fire is not merely heat—it is our most transformative ingredient.”
+          </div>
+          <div class="card-specs">
+            <div class="spec-item">
+              <span class="spec-label">Fermentation</span>
+              <span class="spec-value">48 Hours Cold</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">Hearth Heat</span>
+              <span class="spec-value">480°C / 900°F</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">Wood</span>
+              <span class="spec-value">Aged White Oak</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Scene 3: Osteria & Village Coastal Terrace (Folder 3: frames 601 - 900) -->
+        <article class="editorial-card card-left" id="card-scene-3">
+          <span class="card-badge">03 / The Convivial Piazza</span>
+          <h2 class="card-title">Where Friends & Sea Breeze Meet</h2>
+          <p class="card-body">
+            Perched above the sapphire Amalfi shoreline under red-striped awnings, our terrace welcomes friends to share warm crusts, poured Chianti, and uninterrupted laughter.
+          </p>
+          <div class="card-quote">
+            “To break bread together in the open air is to taste life at its fullest.”
+          </div>
+          <div class="card-specs">
+            <div class="spec-item">
+              <span class="spec-label">Setting</span>
+              <span class="spec-value">Cliffside Piazza</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">Tradition</span>
+              <span class="spec-value">Since 1928</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">Pairing</span>
+              <span class="spec-value">Campania Aglianico</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Scene 4: The Hero Pizza & Cheese Pull (Folder 4: frames 901 - 1175) -->
+        <article class="editorial-card card-center" id="card-scene-4">
+          <span class="card-badge">04 / The Culmination</span>
+          <h2 class="card-title">The Perfect Leopard Crust & Fior di Latte</h2>
+          <p class="card-body">
+            Wood-blistered airy cornicione, sweet volcanic reduction, fragrant hand-torn basil, and ribbons of warm melted mozzarella pulled straight from the peel.
+          </p>
+          <div class="card-quote">
+            “Crisp on the tooth, tender like a cloud.”
+          </div>
+          <div class="card-specs" style="justify-content: center;">
+            <div class="spec-item">
+              <span class="spec-label">Mozzarella</span>
+              <span class="spec-value">Fior di Latte D’Agerola</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">Olive Oil</span>
+              <span class="spec-value">First Cold Pressed</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">Bake Duration</span>
+              <span class="spec-value">60 Seconds Flat</span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- Scroll Prompt -->
+      <div class="scroll-prompt" id="scroll-prompt">
+        <span class="scroll-text">Scroll to Traverse the Story</span>
+        <div class="scroll-mouse">
+          <div class="scroll-wheel"></div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Section 2: Curated Menu -->
+  <section id="menu" class="curated-menu-section">
+    <div class="section-container">
+      <header class="section-header">
+        <span class="section-badge">Le Nostre Pizze</span>
+        <h2 class="section-title">Wood-Fired Masterpieces</h2>
+        <p class="section-desc">
+          Crafted with stone-milled Italian flour, fermented for two days, and baked in under a minute inside our hand-built volcanic hearth.
+        </p>
+      </header>
+
+      <div class="menu-grid">
+        <!-- Item 1 -->
+        <div class="menu-card">
+          <div>
+            <div class="menu-card-top">
+              <h3 class="pizza-name">Margherita Antica</h3>
+              <span class="pizza-price">€16</span>
+            </div>
+            <p class="pizza-ingredients">
+              San Marzano D.O.P. tomato sugo, Fior di Latte d’Agerola, fresh Genovese basil, organic extra virgin olive oil from Sicilian groves.
+            </p>
+          </div>
+          <span class="pizza-badge-pill">The Classic Heritage</span>
+        </div>
+
+        <!-- Item 2 -->
+        <div class="menu-card">
+          <div>
+            <div class="menu-card-top">
+              <h3 class="pizza-name">Diavola Calabrese</h3>
+              <span class="pizza-price">€19</span>
+            </div>
+            <p class="pizza-ingredients">
+              Spicy Spianata Calabrese, smoked Provola cheese, crushed red chili peppers, wildflower hot honey drizzle, fresh oregano.
+            </p>
+          </div>
+          <span class="pizza-badge-pill">Fiery & Sweet</span>
+        </div>
+
+        <!-- Item 3 -->
+        <div class="menu-card">
+          <div>
+            <div class="menu-card-top">
+              <h3 class="pizza-name">Tartufo & Funghi</h3>
+              <span class="pizza-price">€23</span>
+            </div>
+            <p class="pizza-ingredients">
+              Crema di tartufo nero, roasted chanterelle mushrooms, aged Parmigiano Reggiano 24-month, fresh buffalo mozzarella, thyme.
+            </p>
+          </div>
+          <span class="pizza-badge-pill">Earthy & Decadent</span>
+        </div>
+
+        <!-- Item 4 -->
+        <div class="menu-card">
+          <div>
+            <div class="menu-card-top">
+              <h3 class="pizza-name">Burrata & Prosciutto</h3>
+              <span class="pizza-price">€22</span>
+            </div>
+            <p class="pizza-ingredients">
+              Creamy whole Puglia burrata, Prosciutto di Parma aged 20 months, wild arugula, lemon oil, toasted pine nuts.
+            </p>
+          </div>
+          <span class="pizza-badge-pill">Chef's Signature</span>
+        </div>
+
+        <!-- Item 5 -->
+        <div class="menu-card">
+          <div>
+            <div class="menu-card-top">
+              <h3 class="pizza-name">Quattro Formaggi Nobile</h3>
+              <span class="pizza-price">€20</span>
+            </div>
+            <p class="pizza-ingredients">
+              Fior di Latte, Gorgonzola Dolce D.O.P., Taleggio, Pecorino Romano, roasted crushed walnuts, fresh rosemary.
+            </p>
+          </div>
+          <span class="pizza-badge-pill">Rich & Velvety</span>
+        </div>
+
+        <!-- Item 6 -->
+        <div class="menu-card">
+          <div>
+            <div class="menu-card-top">
+              <h3 class="pizza-name">Marinara di Scoglio</h3>
+              <span class="pizza-price">€15</span>
+            </div>
+            <p class="pizza-ingredients">
+              Crushed sweet Corbarino tomatoes, wild Sicilian oregano, thinly sliced purple garlic confit, salted anchovy fillets, olive oil.
+            </p>
+          </div>
+          <span class="pizza-badge-pill">Pure Neapolitan Tradition</span>
+        </div>
+      </div>
+
+      <div style="text-align: center;">
+        <button class="btn btn-terracotta" id="btn-order-online">Order for Takeaway</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 3: Craft & Miniature World Philosophy -->
+  <section id="philosophy" class="philosophy-section">
+    <div class="section-container">
+      <div class="philosophy-grid">
+        <div class="philosophy-visual">
+          <img src="./previews/scene3_mid.jpg" alt="Crust & Ember Pizzeria by the Amalfi Cliffside" class="philosophy-img" />
+          <div class="philosophy-caption">
+            <h4>Piazza San Lorenzo</h4>
+            <p>Our miniature seaside home, established with love and aged oak.</p>
+          </div>
+        </div>
+
+        <div class="philosophy-content">
+          <span class="section-badge">The Philosophy</span>
+          <h3>Where Miniature Craft Meets Timeless Tradition</h3>
+          <p>
+            At Crust & Ember, we believe food is an intimate form of architecture. From cultivating heritage tomatoes on sun-soaked hills to sculpting stone ovens and nurturing alive sourdough cultures, every detail is measured to bring genuine Italian joy to your table.
+          </p>
+
+          <div class="pillars-list">
+            <div class="pillar-item">
+              <div class="pillar-title">48-Hr Fermentation</div>
+              <div class="pillar-desc">Lightness on the palate, rich aromatic complexity, digestible airy crust.</div>
+            </div>
+            <div class="pillar-item">
+              <div class="pillar-title">Pure D.O.P. Provenance</div>
+              <div class="pillar-desc">Strictly certified tomatoes, buffalo mozzarella, and cold-extracted olive oils.</div>
+            </div>
+            <div class="pillar-item">
+              <div class="pillar-title">Wood-Fired Hearth</div>
+              <div class="pillar-desc">White oak embers delivering unmatched leopard blistering at 900°F.</div>
+            </div>
+            <div class="pillar-item">
+              <div class="pillar-title">Convivial Spirit</div>
+              <div class="pillar-desc">A celebration of sharing, generous portions, and genuine Mediterranean warmth.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 4: Visit & Table Reservation -->
+  <section id="visit" class="visit-section">
+    <div class="section-container">
+      <div class="visit-card">
+        <div class="visit-info">
+          <span class="section-badge">Join Us At The Hearth</span>
+          <h3>Experience The Magic in Person</h3>
+          <p>
+            Step inside our warm, candlelit dining room or take a seat beneath the olive trees on the seaside terrace. We hold seats for walk-ins daily, but recommend table reservations for evening dinner service.
+          </p>
+
+          <div class="info-items">
+            <div class="info-row">
+              <svg class="info-icon" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+              <div>
+                <div class="info-title">Piazza San Lorenzo 14</div>
+                <div class="info-sub">Amalfi Coast, Italy & Pop-up Flagship</div>
+              </div>
+            </div>
+
+            <div class="info-row">
+              <svg class="info-icon" viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 C11.99 2 6.47 2 2 12zm4.24 13.71L11 12.6V7h1.5v4.8l4.47 2.68-.74 1.23z"/></svg>
+              <div>
+                <div class="info-title">Opening Hours</div>
+                <div class="info-sub">Tue – Sun: 12:00 – 15:30 & 18:00 – 23:30 (Closed Mondays)</div>
+              </div>
+            </div>
+
+            <div class="info-row">
+              <svg class="info-icon" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+              <div>
+                <div class="info-title">Contact & Bookings</div>
+                <div class="info-sub">ciao@crustandember.com · +39 089 873 214</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <form class="reservation-form" id="res-form" onsubmit="event.preventDefault(); alert('Grazie! Your table reservation request has been submitted to Crust & Ember.');">
+          <div class="form-group">
+            <label class="form-label" for="res-name">Full Name</label>
+            <input type="text" id="res-name" class="form-input" placeholder="e.g. Matteo Rossi" required autocomplete="name" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="res-email">Email Address</label>
+            <input type="email" id="res-email" class="form-input" placeholder="matteo@example.it" required autocomplete="email" />
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+            <div class="form-group">
+              <label class="form-label" for="res-date">Date</label>
+              <input type="date" id="res-date" class="form-input" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="res-guests">Guests</label>
+              <select id="res-guests" class="form-select">
+                <option>2 Guests</option>
+                <option>4 Guests</option>
+                <option>6 Guests</option>
+                <option>8+ Guests</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="res-seating">Preferred Seating</label>
+            <select id="res-seating" class="form-select">
+              <option>Terrace Overlooking the Sea</option>
+              <option>Hearthside by the Stone Oven</option>
+              <option>Intimate Cellar Alcove</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-terracotta" style="width: 100%; margin-top: 0.5rem;">Request Reservation</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <h4>Crust & Ember</h4>
+        <p>A cinematic celebration of artisanal Neapolitan pizza, old-world miniature architecture, and Mediterranean culinary heritage.</p>
+      </div>
+
+      <div class="footer-links-col">
+        <h5>Exploration</h5>
+        <ul class="footer-nav">
+          <li><a href="#cinematic">The 4-Act Cinematic Journey</a></li>
+          <li><a href="#menu">Wood-Fired Pizza Menu</a></li>
+          <li><a href="#philosophy">Our Hearth & Heritage</a></li>
+          <li><a href="#visit">Table Reservations</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links-col">
+        <h5>Provenance</h5>
+        <ul class="footer-nav">
+          <li><a href="#cinematic">San Marzano Harvest</a></li>
+          <li><a href="#cinematic">48-Hour Cold Ferment</a></li>
+          <li><a href="#cinematic">Fior di Latte D’Agerola</a></li>
+          <li><a href="#cinematic">White Oak Embers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links-col">
+        <h5>Locations</h5>
+        <ul class="footer-nav">
+          <li><a href="#">Amalfi Coast Flagship</a></li>
+          <li><a href="#">Firenze Botanical Osteria</a></li>
+          <li><a href="#">Milano Pop-Up Hearth</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>&copy; 2026 Crust & Ember Pizzeria Artigianale. All rights reserved.</span>
+      <span>Handcrafted with Mediterranean Passion & WebGL Performance</span>
+    </div>
+  </footer>
+
+  <!-- Modal Dialog for Table Booking -->
+  <div class="modal-overlay" id="booking-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-hidden="true">
+    <div class="modal-box">
+      <button class="modal-close-btn" id="modal-close" type="button" aria-label="Close reservation modal">&times;</button>
+      <span class="section-badge">Crust & Ember</span>
+      <h3 id="modal-title" style="margin-bottom: 0.8rem; font-size: 1.8rem;">Reserve Your Hearth Table</h3>
+      <p style="color: var(--color-earth-brown); margin-bottom: 1.5rem; font-size: 0.95rem;">
+        Tables are prepared with warm sourdough bread and our house olive oil upon arrival.
+      </p>
+      <form onsubmit="event.preventDefault(); alert('Table confirmed! We look forward to welcoming you.'); document.getElementById('booking-modal').classList.remove('active'); document.getElementById('booking-modal').setAttribute('aria-hidden', 'true');">
+        <div class="form-group">
+          <label class="form-label" for="modal-party-name">Party Name</label>
+          <input type="text" id="modal-party-name" class="form-input" placeholder="Your Name" required autocomplete="name" />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="modal-phone">Phone Number</label>
+          <input type="tel" id="modal-phone" class="form-input" placeholder="+39 ..." required autocomplete="tel" />
+        </div>
+        <button type="submit" class="btn btn-terracotta" style="width: 100%; margin-top: 1rem;">Confirm Reservation</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="./app.js"></script>
+</body>
+</html>
